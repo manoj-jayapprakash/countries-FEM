@@ -3,9 +3,9 @@ import { FilterType } from './FilterType';
 
 export const Filters = () => {
   return (
-    <div className="flex justify-between xl:container mx-auto">
+    <div className="md:flex justify-between items-center xl:container mx-auto">
       <Search />
-      {/* <FilterType /> */}
+      <FilterType />
     </div>
   );
 };

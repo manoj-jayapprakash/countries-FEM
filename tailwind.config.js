@@ -15,6 +15,7 @@ module.exports = {
     inset: {
       12: '3.35rem',
     },
+
     container: {
       screens: {
         sm: '640px',

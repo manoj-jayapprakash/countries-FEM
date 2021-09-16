@@ -29,15 +29,16 @@ export const Search = () => {
   }, []);
 
   return (
-    <div className="search-wrapper p-4 relative  w-96">
+    <div className="search-wrapper p-4 relative md:w-96">
       <label htmlFor="search" className="block">
         Enter the country name
       </label>
       <input
         type="text"
         placeholder="Search for a country..."
-        className="search dark:bg-theme-elements w-full shadow p-2 rounded my-1"
+        className="search bg-theme-elements w-full shadow p-2 rounded my-1"
         onChange={searchHandler}
+        value={value}
         onBlur={hideSuggestions}
       />
       <Link to="/details">
