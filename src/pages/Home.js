@@ -1,9 +1,10 @@
 import { Filters } from '../components/Filters';
-
+import { Countries } from '../components/Countries';
 export const Home = () => {
   return (
-    <div className="">
+    <>
       <Filters />
-    </div>
+      <Countries />
+    </>
   );
 };

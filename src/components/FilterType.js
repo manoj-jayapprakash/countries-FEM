@@ -11,7 +11,7 @@ export const FilterType = () => {
   return (
     <div className="filter__type p-4 w-4/5 md:w-64 relative">
       <button
-        className="filter__type-label flex justify-between items-center w-full p-4 bg-theme-elements rounded"
+        className="filter__type-label flex justify-between items-center w-full p-4 bg-theme-elements shadow rounded"
         onClick={showFilterTypeHandler}
       >
         Filter by Region
@@ -20,7 +20,7 @@ export const FilterType = () => {
       <div
         className={
           showFilterTypes
-            ? 'filter__options my-1 p-4 bg-theme-elements rounded absolute'
+            ? 'filter__options my-1 p-4 bg-theme-elements shadow rounded absolute'
             : 'hidden'
         }
         style={{ width: '90%' }}

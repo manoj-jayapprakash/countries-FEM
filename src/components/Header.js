@@ -29,9 +29,9 @@ export const Header = () => {
     document.body.classList.remove('text-theme-txt');
   }
   return (
-    <header className="flex justify-between p-4 md:p-6 shadow dark:bg-theme-elements">
+    <header className="flex justify-between p-4 md:p-6 shadow dark:bg-theme-elements ">
       <h1 className="text-lg md:text-3xl font-bold">
-        <Link to={Home}>Where in the world?</Link>
+        <Link to="/">Where in the world?</Link>
       </h1>
       <button className="" onClick={saveTheme}>
         {dark ? (

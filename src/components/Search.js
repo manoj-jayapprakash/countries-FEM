@@ -36,7 +36,7 @@ export const Search = () => {
       <input
         type="text"
         placeholder="Search for a country..."
-        className="search bg-theme-elements w-full shadow p-2 rounded my-1"
+        className="search bg-theme-elements w-full p-2 shadow rounded my-1"
         onChange={searchHandler}
         value={value}
         onBlur={hideSuggestions}
