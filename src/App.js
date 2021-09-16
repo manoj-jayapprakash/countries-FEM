@@ -18,9 +18,7 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/details">
-            <Details />
-          </Route>
+          <Route path="/details/:country" component={Details} />
         </Switch>
       </div>
     </Router>

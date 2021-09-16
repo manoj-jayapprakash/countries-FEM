@@ -6,11 +6,11 @@ export const Countries = (props) => {
   const { data, isError, isLoading } = useCountries(props.region, props.url);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   }
   if (isError) {
     return (
-      <div>Error! Unable to load country details. Please try again later.</div>
+      <p>Error! Unable to load country details. Please try again later.</p>
     );
   }
 
