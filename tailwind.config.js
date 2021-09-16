@@ -1,7 +1,17 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ['Nunito', 'sans-serif'],
+    },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      'theme-txt': 'var(--clr-text)',
+      'theme-bg': 'var(--clr-bg)',
+      'theme-elements': 'var(--clr-elements)',
+    },
     extend: {},
   },
   variants: {

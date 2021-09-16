@@ -1,3 +1,15 @@
+:root {
+  --clr-text: hsl(200, 15%, 8%);
+  --clr-bg: hsl(0, 0%, 98%);
+  --clr-elements: hsl(0, 0%, 100%);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark {
+  --clr-text: hsl(0, 0%, 100%);
+  --clr-bg: hsl(207, 26%, 17%);
+  --clr-elements: hsl(209, 23%, 22%);
+}
