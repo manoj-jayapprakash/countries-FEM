@@ -6,7 +6,7 @@ export const Card = (props) => {
       className="mx-auto rounded shadow bg-theme-elements overflow-hidden my-4"
       style={{ maxWidth: '280px' }}
     >
-      <Link to={`/details/${props.country.alpha3Code}`}>
+      <Link to={`/details/${props.code}`}>
         <img
           className="max-w-full block"
           src={props.country.flag}
@@ -14,7 +14,7 @@ export const Card = (props) => {
         />
       </Link>
       <div className="p-4">
-        <Link to={`/details/${props.country.alpha3Code}`}>
+        <Link to={`/details/${props.code}`}>
           <h2 className="text-xl font-bold py-2">{props.country.name}</h2>
         </Link>
         <div className="country-data py-4">

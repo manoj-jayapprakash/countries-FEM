@@ -17,7 +17,11 @@ export const Countries = (props) => {
   return (
     <main className="xl:container mx-auto flex flex-wrap gap-4">
       {data.map((country) => (
-        <Card key={country.alpha3Code} country={country} />
+        <Card
+          key={country.alpha3Code}
+          country={country}
+          code={country.alpha3Code}
+        />
       ))}
     </main>
   );
