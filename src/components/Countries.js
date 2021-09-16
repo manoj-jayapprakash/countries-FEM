@@ -1,15 +1,9 @@
-import { useQuery } from 'react-query';
-
 import { Card } from './Card';
 
-const fetchCountries = async () => {
-  const response = await fetch('https://restcountries.eu/rest/v2/all');
-  const data = await response.json();
-  return data;
-};
+import { useCountries } from '../store/store';
 
-export const Countries = () => {
-  const { data, isError, isLoading } = useQuery('countries', fetchCountries);
+export const Countries = (props) => {
+  const { data, isError, isLoading } = useCountries(props.region, props.url);
 
   if (isLoading) {
     return <div>Loading...</div>;

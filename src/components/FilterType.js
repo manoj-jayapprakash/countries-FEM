@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
 export const FilterType = () => {
+  const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
+
   const [showFilterTypes, setShowFilterTypes] = useState(false);
 
+  //Displays/hides the regions available
   const showFilterTypeHandler = () => {
     setShowFilterTypes(!showFilterTypes);
   };
@@ -25,12 +28,16 @@ export const FilterType = () => {
         }
         style={{ width: '90%' }}
       >
-        <Link to="/products" className="block">
-          Africa
-        </Link>
-        <Link to="/products">Africa</Link>
-        <Link to="/products">Africa</Link>
-        <Link to="/products">Africa</Link>
+        {regions.map((region) => (
+          <Link
+            key={region}
+            to={`/home/${region.toLowerCase()}`}
+            className="block"
+            onClick={() => setShowFilterTypes(false)}
+          >
+            {region}
+          </Link>
+        ))}
       </div>
     </div>
   );

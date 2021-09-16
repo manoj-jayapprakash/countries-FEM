@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Home } from '../pages/Home';
-
 export const Header = () => {
   //Get theme preference from the user's system
   const systemThemePreference =
