@@ -1,3 +1,9 @@
+import { Filters } from '../components/Filters';
+
 export const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <div className="">
+      <Filters />
+    </div>
+  );
 };
