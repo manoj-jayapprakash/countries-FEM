@@ -3,13 +3,9 @@ import { useCountries } from '../store/store';
 import { Link } from 'react-router-dom';
 
 export const CountryDetails = (props) => {
-  const {
-    data: countryRequested,
-    isError,
-    isLoading,
-  } = useCountries(
+  const { data, isError, isLoading } = useCountries(
     props.country,
-    'https://restcountries.eu/rest/v2/alpha/' + props.country
+    'https://restcountries.eu/rest/v2/all/'
   );
   if (isLoading) {
     return <p>Loading...</p>;
@@ -19,7 +15,24 @@ export const CountryDetails = (props) => {
       <p>Error! Unable to load country details. Please try again later.</p>
     );
   }
+  const [countryRequested] = data.filter((c) => c.alpha3Code === props.country);
 
+  const renderBorderCountries = () => {
+    if (countryRequested.borders.length === 0)
+      return <p> No borders countries available </p>;
+    const borderCountriesList = countryRequested.borders.flatMap((bc) =>
+      data.filter((ac) => ac.alpha3Code === bc)
+    );
+    const markup = borderCountriesList.map((c) => (
+      <button
+        key={c.alpha3Code}
+        className="bg-theme-elements rounded shadow px-4 py-2 m-1"
+      >
+        <Link to={`/details/${c.alpha3Code}`}>{c.name}</Link>
+      </button>
+    ));
+    return <>{markup}</>;
+  };
   return (
     <>
       <div className="flag">
@@ -73,7 +86,7 @@ export const CountryDetails = (props) => {
       </div>
       <div className="ld:flex">
         <h4 className="text-lg">Border Countries: </h4>
-        <div className="flex"></div>
+        <div>{renderBorderCountries()}</div>
       </div>
     </>
   );
