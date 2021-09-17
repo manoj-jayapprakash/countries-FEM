@@ -1,7 +1,8 @@
 :root {
   --clr-text: hsl(200, 15%, 8%);
-  --clr-bg: hsl(0, 0%, 98%);
+  --clr-bg: hsl(0, 0%, 90%);
   --clr-elements: hsl(0, 0%, 100%);
+  --clr-gray-text: hsla(220, 14%, 96%, 0.712);
 }
 
 @tailwind base;

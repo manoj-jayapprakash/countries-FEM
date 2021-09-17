@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
+import { useCountries } from '../store/store';
 import { Link } from 'react-router-dom';
+import { useOnClickOutside } from '../hooks/useOnClickOutside';
 
 export const Search = () => {
-  const [value, setValue] = useState();
+  const { data } = useCountries('all', 'https://restcountries.eu/rest/v2/all/');
+  const [value, setValue] = useState('');
   const [showSuggestions, setSuggestions] = useState(false);
-
+  const ref = useRef();
+  useOnClickOutside(ref, () => setSuggestions(false));
   const searchHandler = (e) => {
     setValue(e.target.value);
     setSuggestions(true);
@@ -13,6 +17,18 @@ export const Search = () => {
 
   const hideSuggestions = () => {
     setSuggestions(false);
+  };
+
+  const createSuggestionList = () => {
+    return data
+      .filter((country) => country.name.toLowerCase().includes(value))
+      .map((filterCountry) => (
+        <li className="py-1" key={filterCountry.alpha3Code}>
+          <Link to={`/details/${filterCountry.alpha3Code}`} className="block">
+            {filterCountry.name}
+          </Link>
+        </li>
+      ));
   };
 
   useEffect(() => {
@@ -39,7 +55,6 @@ export const Search = () => {
         className="search bg-theme-elements w-full p-2 shadow rounded my-1"
         onChange={searchHandler}
         value={value}
-        onBlur={hideSuggestions}
       />
       <Link to="/details">
         <i
@@ -48,6 +63,7 @@ export const Search = () => {
         ></i>
       </Link>
       <ul
+        ref={ref}
         className={
           showSuggestions
             ? 'search__suggestions dark:bg-theme-elements absolute w-11/12 p-2'
@@ -55,18 +71,7 @@ export const Search = () => {
         }
         style={{ top: '5.5rem', left: '1rem' }}
       >
-        <li className="py-1">
-          <Link to="/details">One</Link>
-        </li>
-        <li>
-          <Link to="/details">One</Link>
-        </li>
-        <li>
-          <Link to="/details">One</Link>
-        </li>
-        <li>
-          <Link to="/details">One</Link>
-        </li>
+        {showSuggestions && createSuggestionList()}
       </ul>
     </div>
   );

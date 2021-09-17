@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const CountryDetails = (props) => {
   const { data, isError, isLoading } = useCountries(
-    props.country,
+    'all',
     'https://restcountries.eu/rest/v2/all/'
   );
   if (isLoading) {
@@ -19,12 +19,13 @@ export const CountryDetails = (props) => {
 
   const renderBorderCountries = () => {
     if (countryRequested.borders.length === 0)
-      return <p> No borders countries available </p>;
+      return <p className="mx-1"> No borders countries available </p>;
     const borderCountriesList = countryRequested.borders.flatMap((bc) =>
       data.filter((ac) => ac.alpha3Code === bc)
     );
     const markup = borderCountriesList.map((c) => (
       <Link
+        key={c.alpha3Code}
         to={`/details/${c.alpha3Code}`}
         className="block  bg-theme-elements rounded shadow px-4 py-2 m-1"
       >
@@ -47,46 +48,62 @@ export const CountryDetails = (props) => {
           <div className="lg:flex justify-between">
             <div className="my-2 lg:m-0">
               <p className="my-1">
-                <span className="bold">Native Name: </span>
-                {countryRequested.nativeName}
+                Native Name:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.nativeName}
+                </span>
+              </p>
+              <p className="my-1 ">
+                Population:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.population}
+                </span>
               </p>
               <p className="my-1">
-                <span className="bold">Population: </span>
-                {countryRequested.population}
+                Region:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.region}
+                </span>
               </p>
               <p className="my-1">
-                <span className="bold">Region: </span>
-                {countryRequested.region}
+                Sub Region:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.subregion}
+                </span>
               </p>
               <p className="my-1">
-                <span className="bold">Sub Region: </span>
-                {countryRequested.subregion}
-              </p>
-              <p className="my-1">
-                <span className="bold">Capital: </span>
-                {countryRequested.capital}
+                Capital:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.capital}
+                </span>
               </p>
             </div>
             <div className="my-4 lg:m-0">
               <p className="my-1">
-                <span className="bold">Top Level Domain: </span>
-                {countryRequested.topLevelDomain}
+                Top Level Domain:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.topLevelDomain}
+                </span>
               </p>
               <p className="my-1">
-                <span className="bold">Currencies: </span>
-                {countryRequested.currencies[0].code}
+                Currencies:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.currencies[0].code}
+                </span>
               </p>
               <p className="my-1">
-                <span className="bold">Languages: </span>
-                {countryRequested.languages
-                  .map((language) => language.name)
-                  .join(', ')}
+                Languages:{' '}
+                <span className="dark:text-theme-gray-txt">
+                  {countryRequested.languages
+                    .map((language) => language.name)
+                    .join(', ')}
+                </span>
               </p>
             </div>
           </div>
         </div>
         <section className="lg:flex m-2 lg:my-10">
-          <h4 className="text-lg">Border Countries: </h4>
+          <h4 className="text-lg ">Border Countries: </h4>
           <nav className="lg:flex items-center flex-wrap">
             {renderBorderCountries()}
           </nav>

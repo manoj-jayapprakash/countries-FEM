@@ -11,6 +11,7 @@ module.exports = {
       'theme-txt': 'var(--clr-text)',
       'theme-bg': 'var(--clr-bg)',
       'theme-elements': 'var(--clr-elements)',
+      'theme-gray-txt': 'var(--clr-gray-text)',
     },
     inset: {
       12: '3.35rem',

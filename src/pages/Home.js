@@ -25,19 +25,19 @@ export const Home = () => {
         </Route>
         <Route path="/home/asia">
           <Countries
-            region="all"
+            region="Asia"
             url="https://restcountries.eu/rest/v2/region/asia"
           />
         </Route>
         <Route path="/home/europe">
           <Countries
-            region="all"
+            region="Europe"
             url="https://restcountries.eu/rest/v2/region/europe"
           />
         </Route>
         <Route path="/home/oceania">
           <Countries
-            region="all"
+            region="Ocenia"
             url="https://restcountries.eu/rest/v2/region/oceania"
           />
         </Route>
