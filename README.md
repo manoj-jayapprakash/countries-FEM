@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![Countries](./Coountries.png)
+![Countries](./Countries.png)
 
 ### Links
 
