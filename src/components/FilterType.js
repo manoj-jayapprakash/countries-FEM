@@ -5,7 +5,7 @@ import { useOnClickOutside } from '../hooks/useOnClickOutside';
 
 export const FilterType = () => {
   const regions = ['Africa', 'America', 'Asia', 'Europe', 'Oceania'];
-
+  const [region, setRegion] = useState('Filter by Region');
   const [showFilterTypes, setShowFilterTypes] = useState(false);
   const ref = useRef();
   useOnClickOutside(ref, () => setShowFilterTypes(false));
@@ -20,10 +20,12 @@ export const FilterType = () => {
         setShowFilterTypes(false);
       }
     };
+    const handleLoad = () => setRegion('Filter by Region');
     window.addEventListener('keydown', handleEsc);
-
+    window.addEventListener('load', handleLoad);
     return () => {
       window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('load', handleLoad);
     };
   }, []);
   return (
@@ -32,7 +34,7 @@ export const FilterType = () => {
         className="filter__type-label flex justify-between items-center w-full p-4 bg-theme-elements shadow rounded"
         onClick={showFilterTypeHandler}
       >
-        Filter by Region
+        {region}
         <i className="fas fa-angle-down block"></i>
       </button>
       <div
@@ -49,7 +51,10 @@ export const FilterType = () => {
             key={region}
             to={`/home/${region.toLowerCase()}`}
             className="block"
-            onClick={() => setShowFilterTypes(false)}
+            onClick={() => {
+              setShowFilterTypes(false);
+              setRegion(region);
+            }}
           >
             {region}
           </Link>
