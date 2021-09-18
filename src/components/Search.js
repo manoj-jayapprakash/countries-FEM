@@ -66,7 +66,7 @@ export const Search = () => {
         ref={ref}
         className={
           showSuggestions
-            ? 'search__suggestions dark:bg-theme-elements absolute w-11/12 p-2 z-10'
+            ? 'search__suggestions bg-theme-elements rounded shadow absolute w-11/12 p-2 z-10'
             : 'hidden'
         }
         style={{ top: '5.5rem', left: '1rem' }}
