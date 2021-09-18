@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-// Hook
+// Hook when the user clicks on outside the component
 export const useOnClickOutside = (ref, handler) => {
   useEffect(
     () => {

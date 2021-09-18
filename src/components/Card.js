@@ -2,13 +2,15 @@ import { Link } from 'react-router-dom';
 
 export const Card = (props) => {
   return (
-    <article className="mx-auto rounded shadow bg-theme-elements overflow-hidden my-4 w-80 h-96">
+    <article className="rounded shadow bg-theme-elements overflow-hidden my-4 w-72">
       <Link to={`/details/${props.code}`}>
         <img
           className="max-w-full block"
           src={props.country.flag}
           alt={`Flag of ${props.country.name}`}
           loading="lazy"
+          width="350"
+          height="200"
         />
       </Link>
       <div className="p-4">

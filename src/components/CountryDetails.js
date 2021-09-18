@@ -40,6 +40,8 @@ export const CountryDetails = (props) => {
         <img
           src={countryRequested.flag}
           alt={'Flag of ' + countryRequested.name}
+          width="600"
+          height="300"
         />
       </div>
       <div className="lg:w-1/2">

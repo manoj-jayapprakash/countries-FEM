@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 export const Header = () => {
   //Get theme preference from the user's system
   const systemThemePreference =
@@ -28,9 +26,7 @@ export const Header = () => {
   }
   return (
     <header className="flex justify-between p-4 md:p-6 shadow dark:bg-theme-elements ">
-      <h1 className="text-lg md:text-3xl font-bold">
-        <Link to="/">Where in the world?</Link>
-      </h1>
+      <h1 className="text-lg md:text-3xl font-bold">Where in the world?</h1>
       <button className="" onClick={saveTheme}>
         {dark ? (
           <>

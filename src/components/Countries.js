@@ -1,5 +1,6 @@
 import { Card } from './Card';
 
+import { LazyLoad } from 'react-observer-api';
 import { useCountries } from '../store/store';
 
 export const Countries = (props) => {
@@ -15,14 +16,16 @@ export const Countries = (props) => {
   }
 
   return (
-    <main className="xl:container mx-auto flex flex-wrap gap-4">
-      {data.map((country) => (
-        <Card
-          key={country.alpha3Code}
-          country={country}
-          code={country.alpha3Code}
-        />
-      ))}
-    </main>
+    <LazyLoad>
+      <main className="xl:container mx-auto flex justify-center lg:justify-between flex-wrap gap-4 px-2">
+        {data.map((country) => (
+          <Card
+            key={country.alpha3Code}
+            country={country}
+            code={country.alpha3Code}
+          />
+        ))}
+      </main>
+    </LazyLoad>
   );
 };
