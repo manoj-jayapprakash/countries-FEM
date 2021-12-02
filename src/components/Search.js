@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useCountries } from '../store/store';
 import { Link } from 'react-router-dom';
 import { useOnClickOutside } from '../hooks/useOnClickOutside';
+import {urls} from "../store/urls";
 
 export const Search = () => {
-  const { data } = useCountries('all', 'https://restcountries.eu/rest/v2/all/');
+  const { data } = useCountries('all', urls.all);
   const [value, setValue] = useState('');
   const [showSuggestions, setSuggestions] = useState(false);
   const ref = useRef();

@@ -3,42 +3,45 @@ import { Countries } from '../components/Countries';
 
 import { Switch, Route } from 'react-router-dom';
 
+import {urls} from '../store/urls'
+
 export const Home = () => {
+  
   return (
     <>
       <Filters />
       <Switch>
         <Route path="/" exact>
-          <Countries region="all" url="https://restcountries.eu/rest/v2/all" />
+          <Countries region="all" url={urls.all} />
         </Route>
         <Route path="/home/africa">
           <Countries
             region="Africa"
-            url="https://restcountries.eu/rest/v2/region/africa"
+            url={urls.africa}
           />
         </Route>
         <Route path="/home/america">
           <Countries
             region="America"
-            url="https://restcountries.eu/rest/v2/region/americas"
+            url={urls.america}
           />
         </Route>
         <Route path="/home/asia">
           <Countries
             region="Asia"
-            url="https://restcountries.eu/rest/v2/region/asia"
+            url={urls.asia}
           />
         </Route>
         <Route path="/home/europe">
           <Countries
             region="Europe"
-            url="https://restcountries.eu/rest/v2/region/europe"
+            url={urls.europe}
           />
         </Route>
         <Route path="/home/oceania">
           <Countries
-            region="Ocenia"
-            url="https://restcountries.eu/rest/v2/region/oceania"
+            region="Oceania"
+            url={urls.oceania}
           />
         </Route>
       </Switch>

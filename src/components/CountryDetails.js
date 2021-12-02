@@ -1,11 +1,13 @@
 import { useCountries } from '../store/store';
 
 import { Link } from 'react-router-dom';
+import {urls} from '../store/urls';
 
 export const CountryDetails = (props) => {
+  
   const { data, isError, isLoading } = useCountries(
     'all',
-    'https://restcountries.eu/rest/v2/all/'
+    urls.all
   );
   if (isLoading) {
     return <p>Loading...</p>;
@@ -18,7 +20,7 @@ export const CountryDetails = (props) => {
   const [countryRequested] = data.filter((c) => c.alpha3Code === props.country);
 
   const renderBorderCountries = () => {
-    if (countryRequested.borders.length === 0)
+    if (!countryRequested.hasOwnProperty('borders'))
       return <p className="mx-1"> No borders countries available </p>;
     const borderCountriesList = countryRequested.borders.flatMap((bc) =>
       data.filter((ac) => ac.alpha3Code === bc)
