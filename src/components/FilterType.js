@@ -46,17 +46,17 @@ export const FilterType = () => {
         }
         style={{ width: '90%' }}
       >
-        {regions.map((region) => (
+        {regions.map((reg) => (
           <Link
-            key={region}
-            to={`/home/${region.toLowerCase()}`}
+            key={reg}
+            to={`/home/${reg.toLowerCase()}`}
             className="block"
             onClick={() => {
               setShowFilterTypes(false);
-              setRegion(region);
+              setRegion(reg);
             }}
           >
-            {region}
+            {reg}
           </Link>
         ))}
       </div>

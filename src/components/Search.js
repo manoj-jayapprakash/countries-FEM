@@ -19,12 +19,13 @@ export const Search = () => {
   };
 
   const createSuggestionList = () => {
+    
     const list = data
-      .filter((country) => country.name.toLowerCase().includes(value))
+      .filter((country) => country.name.common.toLowerCase().includes(value))
       .map((filterCountry) => (
-        <li className="py-1" key={filterCountry.alpha3Code}>
-          <Link to={`/details/${filterCountry.alpha3Code}`} className="block">
-            {filterCountry.name}
+        <li className="py-1" key={filterCountry.cca3}>
+          <Link to={`/details/${filterCountry.cca3}`} className="block">
+            {filterCountry.name.common}
           </Link>
         </li>
       ));

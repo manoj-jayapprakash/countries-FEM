@@ -17,46 +17,63 @@ export const CountryDetails = (props) => {
       <p>Error! Unable to load country details. Please try again later.</p>
     );
   }
-  const [countryRequested] = data.filter((c) => c.alpha3Code === props.country);
+  const [countryRequested] = data.filter((c) => c.cca3 === props.country);
 
   const renderBorderCountries = () => {
     if (!countryRequested.hasOwnProperty('borders'))
       return <p className="mx-1"> No borders countries available </p>;
     const borderCountriesList = countryRequested.borders.flatMap((bc) =>
-      data.filter((ac) => ac.alpha3Code === bc)
+      data.filter((ac) => ac.cca3 === bc)
     );
     const markup = borderCountriesList.map((c) => (
       <Link
-        key={c.alpha3Code}
-        to={`/details/${c.alpha3Code}`}
+        key={c.cca3}
+        to={`/details/${c.cca3}`}
         className="block  bg-theme-elements rounded shadow px-4 py-2 m-1"
       >
-        {c.name}
+        {c.name.common}
       </Link>
     ));
     return <>{markup}</>;
   };
+
+  const renderCurrencies = () =>{
+    let currency="No currency data available";
+    for (let curr in countryRequested.currencies){
+      currency = curr;
+      break;
+    }
+    return currency;
+  }
+
+  const renderLanguages = () => {
+    let languages=[];
+    for (let lang in countryRequested.languages){
+      languages.push(countryRequested.languages[lang])
+    }
+    if (languages.length > 0) 
+      return languages.join(" ,");
+    else
+      return "No language data available";
+  }
+
+
   return (
     <div className="lg:flex justify-between gap-20 my-10">
       <div className="lg:w-1/2">
         <img
-          src={countryRequested.flag}
-          alt={'Flag of ' + countryRequested.name}
+          src={countryRequested.flags.svg}
+          alt={'Flag of ' + countryRequested.name.common}
           width="600"
           height="300"
         />
       </div>
       <div className="lg:w-1/2">
         <div className="m-2">
-          <h2 className="my-4 text-xl lg:text-4xl">{countryRequested.name}</h2>
+          <h2 className="my-4 text-xl lg:text-4xl">{countryRequested.name.common}</h2>
           <div className="lg:flex justify-between">
             <div className="my-2 lg:m-0">
-              <p className="my-1">
-                Native Name:{' '}
-                <span className="dark:text-theme-gray-txt">
-                  {countryRequested.nativeName}
-                </span>
-              </p>
+              
               <p className="my-1 ">
                 Population:{' '}
                 <span className="dark:text-theme-gray-txt">
@@ -86,21 +103,19 @@ export const CountryDetails = (props) => {
               <p className="my-1">
                 Top Level Domain:{' '}
                 <span className="dark:text-theme-gray-txt">
-                  {countryRequested.topLevelDomain}
+                  {countryRequested.tld}
                 </span>
               </p>
               <p className="my-1">
                 Currencies:{' '}
                 <span className="dark:text-theme-gray-txt">
-                  {countryRequested.currencies[0].code}
+                  {renderCurrencies()}
                 </span>
               </p>
               <p className="my-1">
                 Languages:{' '}
                 <span className="dark:text-theme-gray-txt">
-                  {countryRequested.languages
-                    .map((language) => language.name)
-                    .join(', ')}
+                    {renderLanguages()}
                 </span>
               </p>
             </div>
